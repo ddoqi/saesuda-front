@@ -1,10 +1,18 @@
+import SignUpModal from "@/components/SignUpModal";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import loginSample from "../../public/images/loginSample.png";
 
 const index = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleModalClose = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <div>
+      <SignUpModal isOpen={modalIsOpen} handleClose={handleModalClose} />
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
           <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -51,9 +59,16 @@ const index = () => {
             <button className="text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
               로그인하기
             </button>
-            <p className="text-xs text-gray-500 mt-3">
-              세수다 홈페이지라능 뀨뀨
-            </p>
+
+            <button
+              type="button"
+              onClick={() => {
+                setModalIsOpen(true);
+              }}
+              className="text-md text-gray-500 mt-2"
+            >
+              회원가입하기
+            </button>
           </div>
         </div>
       </section>

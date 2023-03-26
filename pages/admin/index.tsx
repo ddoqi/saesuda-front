@@ -81,7 +81,7 @@ const index = () => {
               </svg>
             </a>
             <button className="flex ml-auto text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">
-              버튼필요한가
+              Total : 3,000
             </button>
           </div>
         </div>

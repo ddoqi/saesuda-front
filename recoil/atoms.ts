@@ -1,12 +1,6 @@
 import { atom, selector } from "recoil";
 
-// const mySelector = selector({
-//   key: "mySelector",
-//   get: () => {
-//     return Date.now();
-//   },
-// });
-
+// 메뉴
 export const menu1Atom = atom({
   key: "menu1",
   default: false,
@@ -20,4 +14,21 @@ export const menu2Atom = atom({
 export const menu3Atom = atom({
   key: "menu3",
   default: false,
+});
+
+// 회원가입
+
+export const emailState = atom({
+  key: "emailState",
+  default: "",
+});
+
+export const passwordState = atom({
+  key: "passwordState",
+  default: "",
+});
+
+export const confirmPasswordState = atom({
+  key: "confirmPasswordState",
+  default: "",
 });
