@@ -1,13 +1,31 @@
 import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 import SelectItemList from "./SelectItemList";
+import axios from "axios";
 
 const Main = () => {
   const connectFuc = async () => {
-    const result = await fetch("https://hamseyoun.github.io/sesudatest");
-    console.log("result:", result);
-    const data = await result.json();
-    console.log("data", data);
+    // const result = await fetch("https://hamseyoun.github.io/sesudatest");
+    // console.log("result:", result);
+    // const data = await result.json();
+    // console.log("data", data);
+
+    const result = axios.get("https://jsonplaceholder.typicode.com/users");
+    console.log("result", result);
+  };
+
+  const loadBannerSliderData = () => {
+    axios({
+      method: "get",
+      url: "/",
+    })
+      .then((res) => {
+        console.log("res:", res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div>
@@ -18,7 +36,7 @@ const Main = () => {
         </div>
         <button
           onClick={() => {
-            connectFuc();
+            loadBannerSliderData();
           }}
           type="button"
           className="bg-brand100 text-white"
