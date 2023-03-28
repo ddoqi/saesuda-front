@@ -8,13 +8,9 @@ module.exports = async () => {
       return [
         {
           source: "/:path*",
-          destination: "https://hamseyoun.github.io/:path*",
+          destination: "http://180.224.245.90:9090/:path*",
         },
       ];
     },
-    // webpack(config) {
-    //   config.resolve.alias["@"] = path.resolve(__dirname);
-    //   return config;
-    // },
   };
 };
