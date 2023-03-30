@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import SelectItemList from "./SelectItemList";
 import axios from "axios";
@@ -10,16 +10,19 @@ const Main = () => {
     axios({
       method: "get",
       // url: "/member/memberList",
-      url: "/member/membertest1",
+      url: "/menu/menulist",
     })
       .then((res) => {
         console.log("res:", res.data.message);
-        // console.log("res:", res.data[0].id);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  useEffect(() => {
+    loadBannerSliderData();
+  }, []);
 
   const postServer = () => {
     axios
@@ -45,7 +48,7 @@ const Main = () => {
           <ItemCard />
           <SelectItemList />
         </div>
-        <button
+        {/* <button
           onClick={() => {
             loadBannerSliderData();
           }}
@@ -54,7 +57,6 @@ const Main = () => {
         >
           언냐 연결해죵
         </button>
-        {/* <div>세윤언냐가 나와야댐{test}</div> */}
         <button
           type="button"
           onClick={() => {
@@ -62,7 +64,7 @@ const Main = () => {
           }}
         >
           서버에요청날리기
-        </button>
+        </button> */}
       </div>
     </div>
   );

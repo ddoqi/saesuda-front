@@ -8,6 +8,8 @@ import {
   confirmPasswordState,
 } from "../recoil/atoms";
 import { emailRegex, pwRegex } from "@/utill/utill";
+import { faChessKing } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 ReactModal.setAppElement("#__next");
 
@@ -24,28 +26,37 @@ const SignUpModal = ({ isOpen, handleClose }: any) => {
     useRecoilState(confirmPasswordState);
 
   const onSubmit = async (data: any) => {
-    const { email, password } = data;
-    console.log("email,password", email, password);
     try {
-      // await registerUser(email, password);
-      // 회원가입 성공 시 처리할 코드
-      console.log("data", data);
-    } catch (err) {
-      // 회원가입 실패 시 처리할 코드
+      const { email, password, confirmPassword } = data;
+      console.log("input data:", email, password, confirmPassword);
+      axios
+        .post("/member/memberJoin", {
+          id: email,
+          pw: password,
+          // auth: "user",
+          nickname: "수민이바보",
+        })
+        .then(function (response) {
+          console.log("요청 성공!");
+          console.log(response);
+        });
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <div>
+      {/* // <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"> */}
       <ReactModal
         isOpen={isOpen}
         onRequestClose={handleClose}
         contentLabel="회원가입 모달"
-        className="text-center w-[45%] bg-white p-5 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="text-center bg-white p-10 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         overlayClassName="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50"
       >
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="h-[500px] flex items-start justify-center">
+          <div className="flex items-start justify-center">
             <div className=" m-auto space-y-4 p-10 border round rounded-md">
               <h1 className="text-2xl font-bold pb-3 text-brand100">
                 회 원 가 입
@@ -81,6 +92,7 @@ const SignUpModal = ({ isOpen, handleClose }: any) => {
                     },
                   })}
                   id="password"
+                  type="password"
                   placeholder="숫자 + 영문 + 특수기호 포함"
                   className="p-2 border border-brand100 ml-3 rounded-md h-[40px] w-[260px]"
                   onChange={(e) => setPassword(e.target.value)}
@@ -95,6 +107,7 @@ const SignUpModal = ({ isOpen, handleClose }: any) => {
                     validate: (value) => value === watch("password"),
                   })}
                   id="confirmPassword"
+                  type="password"
                   placeholder="비밀번호 확인"
                   className="p-2 border border-brand100 ml-3 rounded-md h-[40px] w-[260px]"
                   onChange={(e) => setConfirmPassword(e.target.value)}
