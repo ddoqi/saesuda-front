@@ -7,21 +7,21 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 //recoil적용
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from "recoil";
+import { RecoilRoot } from "recoil";
+// usequery
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient();
+
   return (
     <>
-      <RecoilRoot>
-        <Component {...pageProps} />
-        <ToastContainer />
-      </RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <RecoilRoot>
+          <Component {...pageProps} />
+          <ToastContainer />
+        </RecoilRoot>
+      </QueryClientProvider>
     </>
   );
 }
