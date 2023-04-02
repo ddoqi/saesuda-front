@@ -6,10 +6,12 @@ import { useQuery } from "@tanstack/react-query";
 import getWholeCoffeeData from "@/api/getWholeCoffeeData";
 
 const Main = () => {
-  const [menuList, setMenuList] = useState([]);
-
   // useQuery를 사용해서 서버에서 data를 가져오는 작업은 했음
-  const { isLoading, data, error } = useQuery({
+  const {
+    isLoading,
+    data: menuList,
+    error,
+  } = useQuery({
     queryKey: ["wholeCoffeeData"],
     queryFn: getWholeCoffeeData,
   });
@@ -18,16 +20,14 @@ const Main = () => {
   // 전역상태관리를 하려고
 
   if (isLoading) {
+    console.log("isLoading", isLoading);
     return <div>Loading...</div>;
   }
 
   if (error) {
+    console.log("error", error);
     return <div>Error: {error.message}</div>;
   }
-
-  useEffect(() => {
-    console.log("data:", data);
-  }, []);
 
   const postServer = () => {
     axios
@@ -54,23 +54,6 @@ const Main = () => {
           <ItemCard menuList={menuList} />
           <SelectItemList />
         </div>
-        {/* <button
-          onClick={() => {
-            loadBannerSliderData();
-          }}
-          type="button"
-          className="bg-brand100 text-white"
-        >
-          언냐 연결해죵
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            postServer();
-          }}
-        >
-          서버에요청날리기
-        </button> */}
       </div>
     </div>
   );

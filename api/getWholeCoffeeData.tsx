@@ -6,7 +6,8 @@ const getWholeCoffeeData = () => {
     url: "/menu/menulist",
   })
     .then((res) => {
-      return res.data["data"][0];
+      console.log('res.data["data"][0]', res.data["data"]);
+      return [res.data["data"][0]];
     })
     .catch((err) => {
       console.log(err);

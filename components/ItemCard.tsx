@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import menu1 from "../public/images/menu1.png";
-import menu2 from "../public/images/menu2.png";
-import menu3 from "../public/images/menu3.png";
+
 import { useRecoilState } from "recoil";
-import { menu1Atom, menu2Atom, menu3Atom } from "@/recoil/atoms";
 import OptionModal from "./OptionModal";
+import { userSelectMenuList } from "@/recoil/atoms";
 
 const ItemCard = ({ menuList }) => {
-  const [menu1Checked, setMenu1Checked] = useRecoilState(menu1Atom);
-  const [menu2Checked, setMenu2Checked] = useRecoilState(menu2Atom);
-  const [menu3Checked, setMenu3Checked] = useRecoilState(menu3Atom);
-
   // 모달
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  const photoURL = "http://180.224.245.90:9090/";
   const handleModalClose = () => {
     setModalIsOpen(false);
   };
@@ -26,15 +21,10 @@ const ItemCard = ({ menuList }) => {
         return (
           <div>
             <div className="w-[600px] ml-5 p-3 flex place-items-center border border-brandpink">
-              <input
-                type="checkbox"
-                onChange={() => {
-                  setMenu1Checked(!menu1Checked);
-                }}
-              />
               <div className="m-3">
                 <Image
-                  src={menu1}
+                  src={photoURL + item.menuPicture}
+                  loader={({ src }) => src}
                   width={130}
                   height={100}
                   alt="메뉴 사진입니다. "
