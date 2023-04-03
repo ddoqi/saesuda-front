@@ -5,11 +5,11 @@ import menu1 from "../public/images/menu1.png";
 import { useRecoilState } from "recoil";
 import OptionModal from "./OptionModal";
 import { userSelectMenuList } from "@/recoil/atoms";
+import { photoURL } from "@/api/common";
 
 const ItemCard = ({ menuList }) => {
   // 모달
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const photoURL = "http://180.224.245.90:9090/";
   const handleModalClose = () => {
     setModalIsOpen(false);
   };

@@ -29,22 +29,22 @@ const Main = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const postServer = () => {
-    axios
-      .post("/sesuda/test1", {
-        id: "idtest123",
-        pw: "4321",
-        nickname: "seyoun언냐",
-        auth: "user",
-      })
-      .then(function (response) {
-        console.log("요청 성공!");
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  // const postServer = () => {
+  //   axios
+  //     .post("/sesuda/test1", {
+  //       id: "idtest123",
+  //       pw: "4321",
+  //       nickname: "seyoun언냐",
+  //       auth: "user",
+  //     })
+  //     .then(function (response) {
+  //       console.log("요청 성공!");
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <div>
