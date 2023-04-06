@@ -47,7 +47,7 @@ const ItemCard = ({ menuList }) => {
   }, [selectMenuUID, wholeMenuList]);
 
   return (
-    <div className="flex flex-col w-[60%] bg-brandpink80 rounded-2xl  p-10">
+    <div className="flex flex-col lg:w-[60%] bg-brandpink80 rounded-2xl  p-10">
       <h3 className="text-xl pl-5 pb-5 text-mono100 ">
         메뉴를 선택하면 주문서에 추가됩니다.
       </h3>
@@ -61,9 +61,10 @@ const ItemCard = ({ menuList }) => {
         const menuTitle = item.menuName;
         return (
           <div key={index}>
-            <div className="ml-5 p-3 flex place-items-center bg-brand100 bg-opacity-90 rounded-lg  m-2">
+            <div className="ml-5 p-3 lg:flex place-items-center bg-brand100 bg-opacity-90 rounded-lg  m-2">
               <div className="m-3">
                 <Image
+                  className="md:w-[130px] md:h-[130px] w-full"
                   src={photoURL + item.menuPicture}
                   loader={({ src }) => src}
                   width={130}

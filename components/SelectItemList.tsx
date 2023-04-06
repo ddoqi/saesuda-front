@@ -130,8 +130,8 @@ const SelectItemList = () => {
   };
 
   return (
-    <div className="w-[40%]">
-      <div className="flex flex-col rounded-lg p-3 bg-brand100 h-full ml-[20px]">
+    <div className="lg:w-[40%] lg:mt-0 mt-4">
+      <div className="flex flex-col rounded-lg p-3 bg-brand100 h-full lg:ml-[20px]">
         <div className="bg-white bg-opacity-90 m-3 p-3 rounded-lg text-center flex flex-col items-center justify-center">
           <h3 className=" text-2xl text-brandbeige rounded-2xl bold mt-5 p-3 bg-brand100">
             주문 상세

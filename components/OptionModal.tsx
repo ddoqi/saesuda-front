@@ -52,10 +52,10 @@ const OptionModal = ({ isOpen, handleClose, selectMenuData }) => {
         isOpen={isOpen}
         onRequestClose={handleClose}
         contentLabel="메뉴 선택 option"
-        className="w-[25%] h-[35%] flex items-center justify-center bg-brandbeige rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="lg:w-[25%] lg:h-[35%] flex items-center justify-center bg-brandbeige rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         overlayClassName="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50"
       >
-        <div className=" bg-white p-4 w-[80%]">
+        <div className=" bg-white p-4 lg:w-[80%]">
           <h1 className="text-xl font-bold mb-3">상세주문 Option</h1>
           <div>
             <h3 className="text-xl text-brand100">메뉴명 : {menuName}</h3>
@@ -101,7 +101,7 @@ const OptionModal = ({ isOpen, handleClose, selectMenuData }) => {
                   setAddMilk(false);
                   setAddShot(false);
                   setAddSyrup(false);
-                  setNoneSelect(!noneSelect);
+                  setNoneSelect(false);
                 }}
               />
               <div className="optionList">선택 안함</div>

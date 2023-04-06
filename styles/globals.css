@@ -3,16 +3,20 @@
 @tailwind utilities;
 
 @layer components {
+  .header-login-logout-button {
+    @apply mr-2 hover:text-brandyellow cursor-pointer text-white text-xl;
+  }
+
   .menuName {
-    @apply text-white  text-2xl mb-3;
+    @apply text-white lg:text-2xl mb-3;
   }
 
   .menuInfo {
-    @apply leading-relaxed text-xl;
+    @apply leading-relaxed lg:text-xl;
   }
 
   .menuOption {
-    @apply text-mono100 rounded-md p-1 px-3 mt-3 text-xl bg-brandbeige cursor-pointer hover:bg-[#FEE404];
+    @apply text-mono100 rounded-md p-1 px-3 mt-3 lg:text-xl bg-brandbeige cursor-pointer hover:bg-[#FEE404];
   }
 
   .optionList {

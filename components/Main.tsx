@@ -49,7 +49,7 @@ const Main = () => {
   return (
     <div>
       <div className="bg-brandbeige w-full p-10">
-        <div className="flex flex-row justify-between">
+        <div className="lg:flex flex-row justify-between">
           {/*  ItemCard: w-60% */}
           {/*  SelectItemList: w-40% */}
           <ItemCard menuList={menuList} />
