@@ -3,7 +3,7 @@ import ReactModal from "react-modal";
 
 ReactModal.setAppElement("#__next");
 
-const Modal = ({ isOpen, handleClose }) => {
+const Modal = ({ isOpen, handleClose }: any) => {
   return (
     <div>
       <ReactModal

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import SelectItemList from "./SelectItemList";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import getWholeCoffeeData from "@/api/getWholeCoffeeData";
 import { useRecoilState } from "recoil";
@@ -38,7 +37,7 @@ const Main = () => {
 
   if (error) {
     console.log("error", error);
-    return <div>Error: {error.message}</div>;
+    return <div>Error:에러다</div>;
   }
 
   if (menuList) {

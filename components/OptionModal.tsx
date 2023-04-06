@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 ReactModal.setAppElement("#__next");
 
-const OptionModal = ({ isOpen, handleClose, selectMenuData }) => {
+const OptionModal = ({ isOpen, handleClose, selectMenuData }: any) => {
   const [selectMenuList, setSelectMenuList] =
     useRecoilState(userSelectMenuList);
   const [addMilk, setAddMilk] = useState(false);
@@ -35,7 +35,7 @@ const OptionModal = ({ isOpen, handleClose, selectMenuData }) => {
       cup: 1,
     };
 
-    setSelectMenuList((prev) => {
+    setSelectMenuList((prev: any) => {
       return [...prev, newDetailOptionData];
     });
     alert("선택 완료");

@@ -44,7 +44,7 @@ const SelectItemList = () => {
   // };
 
   const getTotalPrice = () => {
-    const totalPrice = selectMenuList.reduce((acc, item) => {
+    const totalPrice = selectMenuList.reduce((acc: any, item: any) => {
       console.log("acc:", acc);
 
       if (item.orderUid) {
@@ -79,7 +79,7 @@ const SelectItemList = () => {
   }, [selectMenuList]);
 
   const handleCupChange = (index: number, amount: number) => {
-    setSelectMenuList((prevList) => {
+    setSelectMenuList((prevList: any) => {
       // 먼저 복사를 한 다음
       const updatedList = [...prevList];
       // orderUid가 일치하는 index를 찾아낸다.
@@ -97,7 +97,7 @@ const SelectItemList = () => {
     });
   };
 
-  const deleteSelectMenu = (orderUid) => {
+  const deleteSelectMenu = (orderUid: any) => {
     setSelectMenuList((prevList) => {
       // orderUid가 일치하는 index를 찾아낸다.
       const targetIndex = prevList.findIndex(
@@ -137,7 +137,7 @@ const SelectItemList = () => {
             주문 상세
           </h3>
           <div className=" bg-brand100 bg-opacity-70 w-full m-5">
-            {selectMenuList.map((item, index) => {
+            {selectMenuList.map((item: any, index: any) => {
               const orderUid = item.orderUid;
               if (item.orderUid) {
                 return (

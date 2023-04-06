@@ -11,7 +11,7 @@ import {
 } from "@/recoil/atoms";
 import { photoURL } from "@/api/common";
 
-const ItemCard = ({ menuList }) => {
+const ItemCard = ({ menuList }: any) => {
   const [userState, setUserState] = useRecoilState(userStateAtom);
 
   // 모달
@@ -30,7 +30,7 @@ const ItemCard = ({ menuList }) => {
   // 해당 메뉴uid와 일치하는 값만 추출한 것
   useEffect(() => {
     const filteredMenu = wholeMenuList.filter(
-      (menu) => menu.menuUid === selectMenuUID
+      (menu: any) => menu.menuUid === selectMenuUID
     );
 
     setSelectMenuData(
@@ -56,7 +56,7 @@ const ItemCard = ({ menuList }) => {
         handleClose={handleModalClose}
         selectMenuData={selectMenuData}
       />
-      {menuList.map((item, index) => {
+      {menuList.map((item: any, index: any) => {
         const menuUid = item.menuUid;
         const menuTitle = item.menuName;
         return (

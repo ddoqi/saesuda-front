@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import loginSample from "../../public/images/loginSample.png";
 import axios from "axios";
 
-const index = () => {
+const Index = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [pw, setPW] = useState("");
@@ -102,4 +102,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
