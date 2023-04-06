@@ -1,6 +1,3 @@
-const { createProxyMiddleware } = require("http-proxy-middleware");
-const path = require("path");
-
 module.exports = async () => {
   return {
     reactStrictMode: true,
