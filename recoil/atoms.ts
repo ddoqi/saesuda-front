@@ -1,9 +1,19 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
+
+export const userStateAtom = atom({
+  key: "userState",
+  default: "guest",
+});
 
 // 사용자가 선택한 메뉴
 export const userSelectMenuList = atom({
   key: "userSelectMenuList",
   default: [{ memberUid: 0, orderDate: "", orderState: "", orderUid: "" }],
+});
+
+export const menuListAtom = atom({
+  key: "menuListAtom",
+  default: [],
 });
 
 // 회원가입

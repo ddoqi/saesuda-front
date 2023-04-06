@@ -25,7 +25,7 @@ const SignUpModal = ({ isOpen, handleClose }: any) => {
   const [confirmPassword, setConfirmPassword] =
     useRecoilState(confirmPasswordState);
 
-  const onSubmit = async (data: any) => {
+  const signUpAction = async (data: any) => {
     try {
       const { email, password, confirmPassword } = data;
       console.log("input data:", email, password, confirmPassword);
@@ -39,15 +39,21 @@ const SignUpModal = ({ isOpen, handleClose }: any) => {
         .then(function (response) {
           console.log("요청 성공!");
           console.log(response);
+          console.log(response.data.message);
+          if (response.data.message == "회원가입 성공") {
+            alert("회원가입이 완료되었습니다. 로그인을 해주세요");
+            handleClose();
+          }
         });
     } catch (error) {
+      alert("에러났다능!! 관리자 문의하라능!!!");
       console.log(error);
+      handleClose();
     }
   };
 
   return (
     <div>
-      {/* // <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"> */}
       <ReactModal
         isOpen={isOpen}
         onRequestClose={handleClose}
@@ -55,7 +61,7 @@ const SignUpModal = ({ isOpen, handleClose }: any) => {
         className="text-center bg-white p-10 rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         overlayClassName="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50"
       >
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(signUpAction)}>
           <div className="flex items-start justify-center">
             <div className=" m-auto space-y-4 p-10 border round rounded-md">
               <h1 className="text-2xl font-bold pb-3 text-brand100">

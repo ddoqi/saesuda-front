@@ -4,8 +4,21 @@ import SelectItemList from "./SelectItemList";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import getWholeCoffeeData from "@/api/getWholeCoffeeData";
+import { useRecoilState } from "recoil";
+import { menuListAtom, userStateAtom } from "@/recoil/atoms";
 
 const Main = () => {
+  const [userState, setUserState] = useRecoilState(userStateAtom);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("userSessionKey")) {
+      setUserState("loginUser");
+    }
+  }, []);
+  useEffect(() => {
+    console.log("userState:", userState);
+  }, [userState]);
+
   // useQuery를 사용해서 서버에서 data를 가져오는 작업은 했음
   const {
     isLoading,
@@ -16,8 +29,7 @@ const Main = () => {
     queryFn: getWholeCoffeeData,
   });
 
-  // recoil을 쓰는 이유?
-  // 전역상태관리를 하려고
+  const [wholeMenuList, setWholeMenuList] = useRecoilState(menuListAtom);
 
   if (isLoading) {
     console.log("isLoading", isLoading);
@@ -29,28 +41,17 @@ const Main = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  // const postServer = () => {
-  //   axios
-  //     .post("/sesuda/test1", {
-  //       id: "idtest123",
-  //       pw: "4321",
-  //       nickname: "seyoun언냐",
-  //       auth: "user",
-  //     })
-  //     .then(function (response) {
-  //       console.log("요청 성공!");
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
+  if (menuList) {
+    setWholeMenuList(menuList);
+    console.log("selectMenuList:", wholeMenuList);
+  }
 
   return (
     <div>
-      {/* <div>Data: {JSON.stringify(data)}</div> */}
-      <div className="container py-24 mx-auto flex flex-wrap">
-        <div className="flex flex-row justify-between text-left">
+      <div className="bg-brandbeige w-full p-10">
+        <div className="flex flex-row justify-between">
+          {/*  ItemCard: w-60% */}
+          {/*  SelectItemList: w-40% */}
           <ItemCard menuList={menuList} />
           <SelectItemList />
         </div>

@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .menuName {
+    @apply text-white  text-2xl mb-3;
+  }
+
+  .menuInfo {
+    @apply leading-relaxed text-xl;
+  }
+
+  .menuOption {
+    @apply text-mono100 rounded-md p-1 px-3 mt-3 text-xl bg-brandbeige cursor-pointer hover:bg-[#FEE404];
+  }
+
+  .optionList {
+    @apply text-xl p-1;
+  }
+}
