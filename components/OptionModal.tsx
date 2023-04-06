@@ -52,10 +52,10 @@ const OptionModal = ({ isOpen, handleClose, selectMenuData }: any) => {
         isOpen={isOpen}
         onRequestClose={handleClose}
         contentLabel="메뉴 선택 option"
-        className="lg:w-[25%] lg:h-[35%] flex items-center justify-center bg-brandbeige rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        className="lg:w-[35%] lg:h-[45%] flex items-center justify-center bg-brandbeige rounded-lg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         overlayClassName="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50"
       >
-        <div className=" bg-white p-4 lg:w-[80%]">
+        <div className="bg-white p-4 lg:w-[70%] rounded-2xl lg:rounded-none lg:flex lg:flex-col lg:items-center">
           <h1 className="text-xl font-bold mb-3">상세주문 Option</h1>
           <div>
             <h3 className="text-xl text-brand100">메뉴명 : {menuName}</h3>
@@ -108,22 +108,24 @@ const OptionModal = ({ isOpen, handleClose, selectMenuData }: any) => {
             </div>
           </div>
 
-          <button
-            type="button"
-            className="mt-3 border border-black hover:text-brand100 text-black font-bold py-1 px-3 rounded"
-            onClick={() => {
-              finishDetailOrder();
-            }}
-          >
-            주문완료
-          </button>
-          <button
-            onClick={handleClose}
-            type="button"
-            className="ml-1 mt-3 border border-black hover:text-brand100 text-black font-bold py-1 px-3 rounded"
-          >
-            Close
-          </button>
+          <div className="lg:flex">
+            <button
+              type="button"
+              className="mt-3 border border-black hover:text-brand100 text-black font-bold py-1 px-3 rounded"
+              onClick={() => {
+                finishDetailOrder();
+              }}
+            >
+              주문완료
+            </button>
+            <button
+              onClick={handleClose}
+              type="button"
+              className="ml-1 mt-3 border border-black hover:text-brand100 text-black font-bold py-1 px-3 rounded"
+            >
+              Close
+            </button>
+          </div>
         </div>
       </ReactModal>
     </div>
