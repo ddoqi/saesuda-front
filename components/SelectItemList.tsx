@@ -128,6 +128,10 @@ const SelectItemList = () => {
       });
   };
 
+  useEffect(() => {
+    console.log("유저아이디변경되냐", selectMenuList);
+  }, [selectMenuList]);
+
   return (
     <div className="lg:w-[40%] lg:mt-0 mt-4">
       <div className="flex flex-col rounded-lg p-3 bg-brand100 h-full lg:ml-[20px]">

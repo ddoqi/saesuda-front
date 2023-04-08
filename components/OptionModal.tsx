@@ -9,6 +9,7 @@ ReactModal.setAppElement("#__next");
 const OptionModal = ({ isOpen, handleClose, selectMenuData }: any) => {
   const [selectMenuList, setSelectMenuList] =
     useRecoilState(userSelectMenuList);
+
   const [addMilk, setAddMilk] = useState(false);
   const [addShot, setAddShot] = useState(false);
   const [addSyrup, setAddSyrup] = useState(false);

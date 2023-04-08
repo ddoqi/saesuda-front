@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { faBell, faUser, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -7,9 +7,37 @@ import mobileLogo from "../public/images/mobileLogo.png";
 
 import { useRecoilState } from "recoil";
 import { userStateAtom } from "@/recoil/atoms";
+import axios from "axios";
 
 const Header = () => {
   const [userState, setUserState] = useRecoilState(userStateAtom);
+  const [userSessionKey, setUserSessionKey] = useState({
+    sessionKey: "none-key",
+  });
+
+  useEffect(() => {
+    if (sessionStorage.getItem("userSessionKey")) {
+      const sessionKey: any = sessionStorage.getItem("userSessionKey");
+      setUserSessionKey({ sessionKey: sessionKey });
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("userSessionKey", userSessionKey);
+  }, [userSessionKey]);
+
+  const serverLogoutAction = () => {
+    console.log("서버에보내는 request", userSessionKey);
+    axios
+      .post("/member/memberLogout", userSessionKey)
+      .then(function (response) {
+        console.log("요청 성공!");
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -42,6 +70,7 @@ const Header = () => {
                 {userState == "loginUser" ? (
                   <div
                     onClick={() => {
+                      serverLogoutAction();
                       sessionStorage.clear();
                       setUserState("guest");
                     }}
@@ -87,6 +116,7 @@ const Header = () => {
             {userState == "loginUser" ? (
               <div
                 onClick={() => {
+                  serverLogoutAction();
                   sessionStorage.clear();
                   setUserState("guest");
                 }}

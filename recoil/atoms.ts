@@ -5,6 +5,11 @@ export const userStateAtom = atom({
   default: "guest",
 });
 
+// export const userServerUID = atom({
+//   key: "userServerUID",
+//   default: "guest",
+// });
+
 // 사용자가 선택한 메뉴
 export const userSelectMenuList = atom({
   key: "userSelectMenuList",

@@ -4,14 +4,28 @@ import SelectItemList from "./SelectItemList";
 import { useQuery } from "@tanstack/react-query";
 import getWholeCoffeeData from "@/api/getWholeCoffeeData";
 import { useRecoilState } from "recoil";
-import { menuListAtom, userStateAtom } from "@/recoil/atoms";
+import {
+  menuListAtom,
+  userSelectMenuList,
+  userStateAtom,
+} from "@/recoil/atoms";
 
 const Main = () => {
   const [userState, setUserState] = useRecoilState(userStateAtom);
+  const [selectMenuList, setSelectMenuList] =
+    useRecoilState(userSelectMenuList);
 
   useEffect(() => {
     if (sessionStorage.getItem("userSessionKey")) {
       setUserState("loginUser");
+      const serverUserUID = sessionStorage.getItem("serverUID");
+      setSelectMenuList((prevMenuList) => {
+        const newMenuList: any = [...prevMenuList];
+        console.log("newMenuList:", newMenuList);
+        newMenuList[0] = { memberUid: serverUserUID };
+        console.log("newMenuList[0]:", newMenuList[0]);
+        return newMenuList;
+      });
     }
   }, []);
   useEffect(() => {
