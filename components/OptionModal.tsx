@@ -25,7 +25,7 @@ const OptionModal = ({ isOpen, handleClose, selectMenuData }: any) => {
 
   const finishDetailOrder = () => {
     const newDetailOptionData = {
-      orderUid: uuid,
+      frontOrderUid: uuid,
       menuUid,
       menuName,
       menuPrice,

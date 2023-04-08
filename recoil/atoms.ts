@@ -8,7 +8,7 @@ export const userStateAtom = atom({
 // 사용자가 선택한 메뉴
 export const userSelectMenuList = atom({
   key: "userSelectMenuList",
-  default: [{ memberUid: 0, orderDate: "", orderState: "", orderUid: "" }],
+  default: [{ memberUid: 0 }],
 });
 
 export const menuListAtom = atom({

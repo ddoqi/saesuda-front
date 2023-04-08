@@ -19,7 +19,7 @@ const SelectItemList = () => {
   //   console.log("selectMenuList", selectMenuList);
   //   const totalPrice = [];
   //   selectMenuList.map((item) => {
-  //     if (item.orderUid) {
+  //     if (item.frontOrderUid) {
   //       let itemPrice = 0;
   //       console.log(item.menuPrice);
   //       itemPrice += item.menuPrice;
@@ -47,7 +47,7 @@ const SelectItemList = () => {
     const totalPrice = selectMenuList.reduce((acc: any, item: any) => {
       console.log("acc:", acc);
 
-      if (item.orderUid) {
+      if (item.frontOrderUid) {
         let itemPrice = item.menuPrice;
 
         if (item.addMilk) {
@@ -62,7 +62,6 @@ const SelectItemList = () => {
         if (item.cup >= 2) {
           itemPrice = itemPrice * item.cup;
         }
-        console.log("itemPrice:", itemPrice);
 
         return acc + itemPrice;
       } else {
@@ -82,9 +81,9 @@ const SelectItemList = () => {
     setSelectMenuList((prevList: any) => {
       // 먼저 복사를 한 다음
       const updatedList = [...prevList];
-      // orderUid가 일치하는 index를 찾아낸다.
+      // frontOrderUid가 일치하는 index를 찾아낸다.
       const targetIndex = updatedList.findIndex(
-        (item) => item.orderUid === selectMenuList[index].orderUid
+        (item) => item.frontOrderUid === selectMenuList[index].frontOrderUid
       );
 
       if (targetIndex !== -1) {
@@ -97,11 +96,11 @@ const SelectItemList = () => {
     });
   };
 
-  const deleteSelectMenu = (orderUid: any) => {
+  const deleteSelectMenu = (frontOrderUid: any) => {
     setSelectMenuList((prevList) => {
-      // orderUid가 일치하는 index를 찾아낸다.
+      // frontOrderUid가 일치하는 index를 찾아낸다.
       const targetIndex = prevList.findIndex(
-        (item) => item.orderUid === orderUid
+        (item) => item.frontOrderUid === frontOrderUid
       );
 
       if (targetIndex !== -1) {
@@ -117,7 +116,7 @@ const SelectItemList = () => {
   };
 
   const orderAction = () => {
-    console.log("menuList", selectMenuList);
+    console.log("서버에 보내는 데이터 :", selectMenuList);
     axios
       .post("/menu/order", selectMenuList)
       .then(function (response) {
@@ -138,8 +137,8 @@ const SelectItemList = () => {
           </h3>
           <div className=" bg-brand100 bg-opacity-70 w-full m-5">
             {selectMenuList.map((item: any, index: any) => {
-              const orderUid = item.orderUid;
-              if (item.orderUid) {
+              const frontOrderUid = item.frontOrderUid;
+              if (item.frontOrderUid) {
                 return (
                   <div
                     key={index}
@@ -188,7 +187,7 @@ const SelectItemList = () => {
                         type="button"
                         className="bg-brandpink80 ml-2 p-1"
                         onClick={() => {
-                          deleteSelectMenu(orderUid);
+                          deleteSelectMenu(frontOrderUid);
                         }}
                       >
                         삭제

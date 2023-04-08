@@ -47,8 +47,8 @@ const ItemCard = ({ menuList }: any) => {
   }, [selectMenuUID, wholeMenuList]);
 
   return (
-    <div className="flex flex-col lg:w-[60%] bg-brandpink80 rounded-2xl  p-10">
-      <h3 className="text-xl pl-5 pb-5 text-mono100 ">
+    <div className="flex flex-col lg:w-[60%] bg-brandpink80 bg-opacity-70 rounded-2xl  p-10">
+      <h3 className="text-xl pl-5 pb-5 text-mono100">
         메뉴를 선택하면 주문서에 추가됩니다.
       </h3>
       <OptionModal
