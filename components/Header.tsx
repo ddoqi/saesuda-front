@@ -8,12 +8,19 @@ import mobileLogo from "../public/images/mobileLogo.png";
 import { useRecoilState } from "recoil";
 import { userStateAtom } from "@/recoil/atoms";
 import axios from "axios";
+import MyOrderModal from "./MyOrderModal";
 
 const Header = () => {
   const [userState, setUserState] = useRecoilState(userStateAtom);
   const [userSessionKey, setUserSessionKey] = useState({
     sessionKey: "none-key",
   });
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleModalClose = () => {
+    setModalIsOpen(false);
+  };
 
   useEffect(() => {
     if (sessionStorage.getItem("userSessionKey")) {
@@ -41,6 +48,7 @@ const Header = () => {
 
   return (
     <div>
+      <MyOrderModal isOpen={modalIsOpen} handleClose={handleModalClose} />
       <header className="text-gray-600 body-font bg-brand100">
         {/* 웹용 헤더 */}
         <div className="hidden lg:block">
@@ -63,20 +71,33 @@ const Header = () => {
             </div>
             {/* 알람 아이콘 */}
                 {/* <FontAwesomeIcon
-              icon={faBell}
-              className="mr-3 hover:text-brand100 cursor-pointer"
-            /> */}
+                  icon={faBell}
+                  className="mr-3 hover:text-brand100 cursor-pointer"
+                /> */}
 
                 {userState == "loginUser" ? (
-                  <div
-                    onClick={() => {
-                      serverLogoutAction();
-                      sessionStorage.clear();
-                      setUserState("guest");
-                    }}
-                    className="header-login-logout-button"
-                  >
-                    로그아웃
+                  <div className="flex flex-row">
+                    <div
+                      onClick={() => {
+                        setModalIsOpen(true);
+                      }}
+                      className="text-white items-center flex hover:text-brand100 cursor-pointer"
+                    >
+                      <FontAwesomeIcon
+                        icon={faBell}
+                        className="mr-3 hover:text-brand100 cursor-pointer"
+                      />
+                    </div>
+                    <div
+                      onClick={() => {
+                        serverLogoutAction();
+                        sessionStorage.clear();
+                        setUserState("guest");
+                      }}
+                      className="header-login-logout-button"
+                    >
+                      로그아웃
+                    </div>
                   </div>
                 ) : (
                   <div
@@ -88,14 +109,6 @@ const Header = () => {
                     로그인
                   </div>
                 )}
-                <div
-                  onClick={() => {
-                    location.href = "/admin";
-                  }}
-                  className="mr-5  hover:text-brandyellow cursor-pointer"
-                >
-                  관리자 페이지
-                </div>
               </nav>
             </div>
           </div>
@@ -114,15 +127,28 @@ const Header = () => {
           </div>
           <div className="bg-mono100 max-h-[40px] h-full flex items-end justify-end pr-3">
             {userState == "loginUser" ? (
-              <div
-                onClick={() => {
-                  serverLogoutAction();
-                  sessionStorage.clear();
-                  setUserState("guest");
-                }}
-                className="header-login-logout-button"
-              >
-                로그아웃
+              <div className="flex">
+                <div
+                  onClick={() => {
+                    setModalIsOpen(true);
+                  }}
+                  className="text-white items-center flex hover:text-brand100 cursor-pointer"
+                >
+                  <FontAwesomeIcon
+                    icon={faBell}
+                    className="mr-3 hover:text-brand100 cursor-pointer"
+                  />
+                </div>
+                <div
+                  onClick={() => {
+                    serverLogoutAction();
+                    sessionStorage.clear();
+                    setUserState("guest");
+                  }}
+                  className="header-login-logout-button"
+                >
+                  로그아웃
+                </div>
               </div>
             ) : (
               <div

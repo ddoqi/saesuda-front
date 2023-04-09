@@ -25,7 +25,8 @@
     "**/*.tsx",
     "components/ProjectCard.jsx",
     "components/ProjectCard.jsx",
-    "components/Modal.jsx"
+    "components/Modal.jsx",
+    "api/getWholeDataInAdmin.tsㅌ"
   ],
   "exclude": ["node_modules"]
 }

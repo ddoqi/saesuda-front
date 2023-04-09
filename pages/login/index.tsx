@@ -10,10 +10,6 @@ const Index = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [pw, setPW] = useState("");
-  // const [serverUID, setServerUID] = useRecoilState(userServerUID);
-
-  const [selectMenuList, setSelectMenuList] =
-    useRecoilState(userSelectMenuList);
 
   const handleModalClose = () => {
     setModalIsOpen(false);
@@ -27,40 +23,26 @@ const Index = () => {
           pw,
         })
         .then(function (response) {
-          console.log("요청 성공!");
-          console.log("서버response", response);
-
-          console.log(response.data.message);
-          console.log(response.data.data.sessionKey);
-
+          if (response.data.message == "admin login") {
+            sessionStorage.setItem("loginState", "admin");
+            location.href = "/admin";
+          }
           if (response.data.message == "login success") {
             const sessionKey = response.data.data.sessionKey;
             alert("로그인 성공~~");
-            // console.log(response.data.data.memberUid);
-            // 요기 아래에서 user uid 받아서
-            // const serverUserUID = response.data.data.memberUid;
-            // console.log("serverUserUID", serverUserUID);
-            // setMenuList((prevMenuList) => {
-            //   const newMenuList = [...prevMenuList];
-            //   console.log("newMenuList[0].memberUid:", newMenuList[0]);
-            //   newMenuList[0] = { memberUid: serverUserUID };
-            //   return newMenuList;
-            // });
             const serverUserUID = response.data.data.memberUid;
-            console.log("serverUserUID", serverUserUID);
             sessionStorage.setItem("serverUID", serverUserUID);
-
-            // update the memberUid value of userSelectMenuList
-            // setSelectMenuList((prevMenuList) => {
-            //   const newMenuList = [...prevMenuList];
-            //   console.log("newMenuList:", newMenuList);
-            //   newMenuList[0] = { memberUid: serverUserUID };
-            //   console.log("newMenuList[0]:", newMenuList[0]);
-            //   return newMenuList;
-            // });
-            //
             sessionStorage.setItem("userSessionKey", sessionKey);
+
             location.href = "/";
+          }
+          if (response.data.message == "password-fail") {
+            alert("비밀번호가 틀려쪄염 ㅠ.ㅠ");
+            return;
+          }
+          if (response.data.message == "password-fail") {
+            alert("가입되지 않은 유저에영, 회원가입이나 하세영");
+            return;
           }
         });
     } catch (error) {

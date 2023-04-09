@@ -122,8 +122,13 @@ const SelectItemList = () => {
       .then(function (response) {
         console.log("요청 성공!");
         console.log(response);
+        if (response.data.message == "order success!") {
+          alert("주문 완료 ㅇ.<");
+          return;
+        }
       })
       .catch(function (error) {
+        alert("주문 실패했쪙 ㅠ");
         console.log(error);
       });
   };
