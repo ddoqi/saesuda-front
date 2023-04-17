@@ -36,7 +36,7 @@
 
 ## ⏳ 프로젝트 기간
 
-### 2023년 3월 2일 - 2023년 4월 14일
+### 2023년 4월 ~
 
 ## 📌 링크
 
@@ -47,7 +47,7 @@
 
 ## 💻 Stack
 
--
+- FE : NEXT.js , TypeScript, React-query, axios , Recoil, Styled-component, Tailwind
 
 <br/>
 
