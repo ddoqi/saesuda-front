@@ -32,7 +32,6 @@ const Main = () => {
     console.log("userState:", userState);
   }, [userState]);
 
-  // useQuery를 사용해서 서버에서 data를 가져오는 작업은 했음
   const {
     isLoading,
     data: menuList,
